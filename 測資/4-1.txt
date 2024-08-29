@@ -1,0 +1,392 @@
+當測試「Test cast 1 of 3」時，Input為>>1
+// ========== Proj. 4    Prob. 1   Test 1/3 (viewable) ============
+
+  // =========== Proj. 3 tests (from Prob. 3&4) START =========
+
+  // preparation
+
+  int a1, a2, a3 ;
+  float f1, f2, f3 ;
+  bool b1, b2, b3 ;
+  string s1, s2, s3 ;
+  char c1, c2, c3 ;
+  int a[10], b[10] ;
+  string s[10] ;
+  int i, j, k ;
+
+  // Problem 3 and 4 : test data 1/3 (viewable)
+
+  a1 = 10 ;
+  a2 = 20 ;
+  a3 = -30 ;
+  f1 = 1.5 ;
+  f2 = 0.25 ;
+  f3 = -0.125 ;
+  s1 = "Hi" ;
+  s2 = "Hello" ;
+  s3 = "What" ;
+  c1 = 'a' ;
+  c2 = 'b' ;
+  c3 = 'c' ;
+
+  a[0] = a[1] = a[2] = a[3] = a[4] = a[5] = a[6] = a[7] = 10 ;
+  b[0] = b[1] = b[2] = b[3] = b[4] = b[5] = b[6] = b[7] = 20 ;
+  i = j = k = 0 ;
+  s[0] = s[1] = s[2] = s[3] = s[4] = s[5] = s[6] = s[7] = "OK" ;
+
+  // + - * / %
+  cout << ( a[1] = a2 = a[2]+a[3]*a[3]-a1-a2-a[4]%50 ) << "\n" ;
+  cout << a[1]-305%a[2]-300/a[3]- ( a[3] = a2-a[4] ) %50 << "\n" ;
+  cout << a[1]-305%a[2]- ( a[3] = a2-a[4] ) %50-300/a[3] << "\n" ;
+  cout << ( a[2] = 300 / ( a[2]+a[1] ) +a1 ) +10+a[2] << "\n" ;  
+  cout << a[1]- - ( a[2]-a3*a[3] ) << "\n" ;
+
+  // << >>
+  cout << a[2] << "\n" ;
+  cout << ( a[2] = ( a[2] << 2 ) -a2-a[1]/2*3%25 ) << "\n" ;
+  cout << ( a[1] = a[2] = ( a[2] >> 2 ) + a[1]%a[2] ) << "\n" ;
+
+  // && || ! < <= > >=  ==   !=
+  cout << ( b1 = f1-a[2]*f1+a2 > f2-a[2]*f1+a2 ) << "\n" ;
+  cout << ( b2 = a[1]+a[2] >= a[3]%35 ) << "\n" ;
+  cout << ( b3 = b1 && ( b2 || a[3] >= a[2]%a[1] ) ) << "\n" ;
+  cout << ( b3 = b3 || ( a[1]*a3 < a[2]*a2 && ! ( b2 || a[3] >= a[2]%a[1] ) ) ) << "\n" ;
+
+  cout << ( ! ( a[1] == a[1]*2-a[1] ) && b3 ) << "\n" ;
+  cout << ( b3 || a[1] != a[1]*2-a[1] || ! ( a2 > a[2] ) ) << "\n" ;
+  cout << ( b3 || ( a[1] != a[1]*2-a[1] && true ) || ! ( a2 > a[2] || false ) ) << "\n" ;
+  // cout << ( true && false == false ) << "\n" ; // '==' and '!=' should not be
+  // cout << ( true || true != false ) << "\n" ;  // applied to booleans
+
+  // string
+  cout << ( s[2] = ( s[1] = s[1] + " " + s[2] ) + "!Hello!" + s[1] ) << "\n" ;
+  cout << s[1] << "\n" << s[2] << "\n" ;
+  cout << ( s[3] = s[2] + c1 + ( s[2] = s1 + s3 ) + s3 + s[2] ) << "\n" ;
+  cout << s[1] + "\n" + s[2] + "\n" + s[3] << "\n" ;
+
+  // =========== Proj. 3 tests (from Prob. 3&4) END   =========
+
+int gA, gY ; // 'gY', a to be used global, has to be declared in advance
+  gY = 3 ;
+  gA = 20 ;
+
+void F111( int gA ) {
+  int gX, b ;
+  gX = b = 12+gY ; // though global, 'gY' has to be declared in advance
+  cout << "F2(): gX : " << gX << " ; gA : " << gA << "\n" ;
+  gA += b ;
+  gY = gA * 2 ;
+  gX = 180 ;
+} // F111()
+
+int F112( int gA ) {
+  int gX, b ;
+  gX = b = 12+gY ; // though global, 'gY' has to be declared in advance
+  gA += b ;
+  gY = gA * 2 ;
+  gX = 180 ;
+  cout << "F2(): gX : " << gX << " ; gA : " << gA 
+       << " ; gY : " << gY << " ; b : " << b << "\n" ;
+  if ( gY > gA )
+    return gY+b ;
+  else
+    return gA+b ;
+} // F112()
+
+string F113( int gA ) {
+  int gX, b ;
+  string str ;
+  str = "CYCU-ICE!" ;
+  gX = b = 12+gY ; // though global, 'gY' has to be declared in advance
+  gA += b ;
+  gY = gA * 2 ;
+  gX = 180 ;
+  cout << "F2(): gX : " << gX << " ; gA : " << gA 
+       << " ; gY : " << gY << " ; b : " << b << "\n" ;
+  if ( gY > gA )
+    return "Great! " + str ;
+  else
+    return "Bravo! " + str ;
+} // F113()
+
+  F111( gA ) ;
+  cout << "Global: gA : " << gA << " gY : " << gY << " a1 : " << a1 << "\n" ;
+  cout << "Global: gA+gY+F112( gA )+a2 : " << gA+gY+F112( gA )+a2 << " a2 : " << a2 << "\n" ;
+  cout << "Global: F113( gA ) + ' OK?' : " << F113( gA ) + " OK?" << "\n" ;
+
+Done   (  
+  ) 
+     ;cout << 10 ; // Program execution
+  cout << 3+5 ;     // should not come here.<<
+
+正確的輸出應該是>>Our-C running ...
+> Definition of a1 entered ...
+Definition of a2 entered ...
+Definition of a3 entered ...
+> Definition of f1 entered ...
+Definition of f2 entered ...
+Definition of f3 entered ...
+> Definition of b1 entered ...
+Definition of b2 entered ...
+Definition of b3 entered ...
+> Definition of s1 entered ...
+Definition of s2 entered ...
+Definition of s3 entered ...
+> Definition of c1 entered ...
+Definition of c2 entered ...
+Definition of c3 entered ...
+> Definition of a entered ...
+Definition of b entered ...
+> Definition of s entered ...
+> Definition of i entered ...
+Definition of j entered ...
+Definition of k entered ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> 70
+Statement executed ...
+> 25
+Statement executed ...
+> 50
+Statement executed ...
+> 36
+Statement executed ...
+> 1883
+Statement executed ...
+> 13
+Statement executed ...
+> -23
+Statement executed ...
+> -5
+Statement executed ...
+> true
+Statement executed ...
+> false
+Statement executed ...
+> true
+Statement executed ...
+> true
+Statement executed ...
+> false
+Statement executed ...
+> true
+Statement executed ...
+> true
+Statement executed ...
+> OK OK!Hello!OK OK
+Statement executed ...
+> OK OK
+OK OK!Hello!OK OK
+Statement executed ...
+> OK OK!Hello!OK OKaHiWhatWhatHiWhat
+Statement executed ...
+> OK OK
+HiWhat
+OK OK!Hello!OK OKaHiWhatWhatHiWhat
+Statement executed ...
+> Definition of gA entered ...
+Definition of gY entered ...
+> Statement executed ...
+> Statement executed ...
+> Definition of F111() entered ...
+> Definition of F112() entered ...
+> Definition of F113() entered ...
+> F2(): gX : 15 ; gA : 20
+Statement executed ...
+> Global: gA : 20 gY : 70 a1 : 10
+Statement executed ...
+> Global: gA+gY+F112( gA )+a2 : F2(): gX : 180 ; gA : 102 ; gY : 204 ; b : 82
+446 a2 : 70
+Statement executed ...
+> Global: F113( gA ) + ' OK?' : F2(): gX : 180 ; gA : 236 ; gY : 472 ; b : 216
+Great! CYCU-ICE! OK?
+Statement executed ...
+> Our-C exited ...<<
+
+
+
+
+
+當測試「Test case 2 of 3」時，Input為>>2
+// ========== Proj. 4    Prob. 1   Test 2/3 (viewable) ============
+
+int gA, gY ; // 'gY', a to be used global, has to be declared in advance
+
+void F111( int gA ) {
+  int gX, b ;
+  gX = b = 12+gY ; // though global, 'gY' has to be declared in advance
+  cout << "F2(): gX : " << gX << " ; gA : " << gA << "\n" ;
+  gA += b ;
+  gY = gA * 2 ;
+  gX = 180 ;
+} // F111()
+
+int F112( int gA ) {
+  int gX, b ;
+  gX = b = 12+gY ; // though global, 'gY' has to be declared in advance
+  gA += b ;
+  gY = gA * 2 ;
+  gX = 180 ;
+  cout << "F2(): gX : " << gX << " ; gA : " << gA 
+       << " ; gY : " << gY << " ; b : " << b << "\n" ;
+  if ( gY > gA )
+    return gY+b ;
+  else
+    return gA+b ;
+} // F112()
+
+string F113( int gA ) {
+  int gX, b ;
+  string str ;
+  str = "CYCU-ICE!" ;
+  gX = b = 12+gY ; // though global, 'gY' has to be declared in advance
+  gA += b ;
+  gY = gA * 2 ;
+  gX = 180 ;
+  cout << "F2(): gX : " << gX << " ; gA : " << gA 
+       << " ; gY : " << gY << " ; b : " << b << "\n" ;
+  if ( gY > gA )
+    return "Great! " + str ;
+  else
+    return "Bravo! " + str ;
+} // F113()
+
+// ==================
+
+int main() {
+
+  // =========== Proj. 3 tests (from Prob. 3&4) START =========
+
+  // preparation
+
+  int a1, a2, a3 ;
+  float f1, f2, f3 ;
+  bool b1, b2, b3 ;
+  string s1, s2, s3 ;
+  char c1, c2, c3 ;
+  int a[10], b[10] ;
+  string s[10] ;
+  int i, j, k ;
+
+  // Problem 3 and 4 : test data 1/3 (viewable)
+
+  a1 = 10 ;
+  a2 = 20 ;
+  a3 = -30 ;
+  f1 = 1.5 ;
+  f2 = 0.25 ;
+  f3 = -0.125 ;
+  s1 = "Hi" ;
+  s2 = "Hello" ;
+  s3 = "What" ;
+  c1 = 'a' ;
+  c2 = 'b' ;
+  c3 = 'c' ;
+
+  a[0] = a[1] = a[2] = a[3] = a[4] = a[5] = a[6] = a[7] = 10 ;
+  b[0] = b[1] = b[2] = b[3] = b[4] = b[5] = b[6] = b[7] = 20 ;
+  i = j = k = 0 ;
+  s[0] = s[1] = s[2] = s[3] = s[4] = s[5] = s[6] = s[7] = "OK" ;
+
+  // + - * / %
+  cout << ( a[1] = a2 = a[2]+a[3]*a[3]-a1-a2-a[4]%50 ) << "\n" ;
+  cout << a[1]-305%a[2]-300/a[3]- ( a[3] = a2-a[4] ) %50 << "\n" ;
+  cout << a[1]-305%a[2]- ( a[3] = a2-a[4] ) %50-300/a[3] << "\n" ;
+  cout << ( a[2] = 300 / ( a[2]+a[1] ) +a1 ) +10+a[2] << "\n" ;  
+  cout << a[1]- - ( a[2]-a3*a[3] ) << "\n" ;
+
+  // << >>
+  cout << a[2] << "\n" ;
+  cout << ( a[2] = ( a[2] << 2 ) -a2-a[1]/2*3%25 ) << "\n" ;
+  cout << ( a[1] = a[2] = ( a[2] >> 2 ) + a[1]%a[2] ) << "\n" ;
+
+  // && || ! < <= > >=  ==   !=
+  cout << ( b1 = f1-a[2]*f1+a2 > f2-a[2]*f1+a2 ) << "\n" ;
+  cout << ( b2 = a[1]+a[2] >= a[3]%35 ) << "\n" ;
+  cout << ( b3 = b1 && ( b2 || a[3] >= a[2]%a[1] ) ) << "\n" ;
+  cout << ( b3 = b3 || ( a[1]*a3 < a[2]*a2 && ! ( b2 || a[3] >= a[2]%a[1] ) ) ) << "\n" ;
+
+  cout << ( ! ( a[1] == a[1]*2-a[1] ) && b3 ) << "\n" ;
+  cout << ( b3 || a[1] != a[1]*2-a[1] || ! ( a2 > a[2] ) ) << "\n" ;
+  cout << ( b3 || ( a[1] != a[1]*2-a[1] && true ) || ! ( a2 > a[2] || false ) ) << "\n" ;
+  // cout << ( true && false == false ) << "\n" ; // '==' and '!=' should not be
+  // cout << ( true || true != false ) << "\n" ;  // applied to booleans
+
+  // string
+  cout << ( s[2] = ( s[1] = s[1] + " " + s[2] ) + "!Hello!" + s[1] ) << "\n" ;
+  cout << s[1] << "\n" << s[2] << "\n" ;
+  cout << ( s[3] = s[2] + c1 + ( s[2] = s1 + s3 ) + s3 + s[2] ) << "\n" ;
+  cout << s[1] + "\n" + s[2] + "\n" + s[3] << "\n" ;
+
+  // =========== Proj. 3 tests (from Prob. 3&4) END   =========
+
+  gY = 3 ;
+  gA = 20 ;
+
+  // === first set up global var., then function uses
+  
+  F111( gA ) ;
+  cout << "Global: gA : " << gA << " gY : " << gY << " a1 : " << a1 << "\n" ;
+  cout << "Global: gA+gY+F112( gA )+a2 : " << gA+gY+F112( gA )+a2 << " a2 : " << a2 << "\n" ;
+  cout << "Global: F113( gA ) + ' OK?' : " << F113( gA ) + " OK?" << "\n" ;
+
+} // main()
+
+main() ; // uncomment when this becomes a test data
+
+Done   (  
+  ) 
+     ;cout << 10 ; // Program execution
+  cout << 3+5 ;     // should not come here.<<
+
+正確的輸出應該是>>Our-C running ...
+> Definition of gA entered ...
+Definition of gY entered ...
+> Definition of F111() entered ...
+> Definition of F112() entered ...
+> Definition of F113() entered ...
+> Definition of main() entered ...
+> 70
+25
+50
+36
+1883
+13
+-23
+-5
+true
+false
+true
+true
+false
+true
+true
+OK OK!Hello!OK OK
+OK OK
+OK OK!Hello!OK OK
+OK OK!Hello!OK OKaHiWhatWhatHiWhat
+OK OK
+HiWhat
+OK OK!Hello!OK OKaHiWhatWhatHiWhat
+F2(): gX : 15 ; gA : 20
+Global: gA : 20 gY : 70 a1 : 10
+Global: gA+gY+F112( gA )+a2 : F2(): gX : 180 ; gA : 102 ; gY : 204 ; b : 82
+446 a2 : 70
+Global: F113( gA ) + ' OK?' : F2(): gX : 180 ; gA : 236 ; gY : 472 ; b : 216
+Great! CYCU-ICE! OK?
+Statement executed ...
+> Our-C exited ...<<

@@ -1,0 +1,297 @@
+1
+  // preparation
+
+  int x, y, z ; // to be declared as block-locals again
+  x = 11 ;
+  y = 22 ;
+  z = 33 ;
+
+  int a1, a2, a3 ;
+  float f1, f2, f3 ;
+  bool b1, b2, b3 ;
+  string s1, s2, s3 ;
+  char c1, c2, c3 ;
+  int a[10], b[10] ;
+  string s[10] ;
+  int i, j, k ;
+
+  // Problems 9 and 10 : test data 1/3 (viewable)
+  // Main difference with Problems 7&8 : with array
+
+  a1 = 10 ;
+  a2 = 20 ;
+  a3 = -30 ;
+  f1 = 1.5 ;
+  f2 = 0.25 ;
+  f3 = -0.125 ;
+  s1 = "Hi" ;
+  s2 = "Hello" ;
+  s3 = "What" ;
+  c1 = 'a' ;
+  c2 = 'b' ;
+  c3 = 'c' ;
+  i = j = k = 0 ;
+
+  i = 0 ;
+  while ( i < 10 ) {
+    a[i] = i*10 ;
+    b[i] = i*20 ;
+    s[i] = "OK" ;
+    i++ ;
+  } // while ( i < 10 )
+
+  // a[0] = a[1] = a[2] = a[3] = a[4] = a[5] = a[6] = a[7] = 10 ;
+  // b[0] = b[1] = b[2] = b[3] = b[4] = b[5] = b[6] = b[7] = 20 ;
+  // s[0] = s[1] = s[2] = s[3] = s[4] = s[5] = s[6] = s[7] = "OK" ;
+
+  i = -3 ;
+
+  while ( a[1]+a[2] < a[3]+a[4] ) {
+    a[1] += 2, a[2] += 3 ;
+    i = i * -1 ;
+    a3 += a1*2+ ( a[2]-a[1] ) - i ;
+    a1++ ;
+  } // while ( a1 < a2 )
+
+  cout << "a3 : " << a3 << "\n" ;
+  i = 1 ;
+  while ( i < 4 ) {
+    cout << "a[" << i << "] : " << a[i] << "\n" ;
+    i++ ;
+  } // while
+
+  if ( a[1]+a[2] > a2 ) {
+    a1 += a3 - a[2] ;
+    a2 -= a2 - a[3] ;
+  } // if a3 > a1*a2
+  else { // a3 <= a1*a2
+    a2 += a[3] - a2 ;
+    a1 -= a[2] - a3 ;
+  } // else a3 <= a1*a2
+
+  cout << "a1 : " << a1 << " a2 : " << a2 << " a3 : " << a3 << "\n" ;
+  cout << "------------------------------------------\n" ;
+  cout << "x : " << x << " y : " << y << " z : " << z << "\n" ;
+
+  a1 = 10 ;
+  a2 = 20 ;
+  a3 = -30 ;
+  i = 0 ;
+
+  while ( a1 < a2 ) {
+    a1 += 5, a2 += 3 ;
+    int x, y ;
+    x = y = 100 ;
+    a3 += a[1]*2+ ( a[2]-a1 ) *a[i++%10]++ ;
+    x += a[i%10]++ + ++z ;
+    cout << "a3 : " << a3 << " x : " << x << " z : " << z << "\n" ;
+  } // while ( a1 < a2 )
+
+  cout << "a1 : " << a1 << " a2 : " << a2 << " a3 : " << a3 << " x : " << x << "\n" ;
+  i = 1 ;
+  while ( i < 4 ) {
+    cout << "a[" << i << "] : " << a[i] << "\n" ;
+    i++ ;
+  } // while
+
+  if ( a[3] > a[1]+a[2] ) {
+    int x, y ;
+    x = y = 200 ;
+    y = a[1] += a3 - a2 + x ;
+    a[2] -= z = a2 - a3 + y ;
+    cout << "a1 : " << a1 << " a2 : " << a2 << " y : " << y << " z : " << z << "\n" ;
+  } // if a3 > a1*a2
+  else { // a3 <= a1*a2
+    int x, y ;
+    x = y = 300 ;
+    y = a[2] += a3 - a2 + x ;
+    a[1] -= z = a2 - a3 + y ;
+    cout << "a1 : " << a1 << " a2 : " << a2 << " y : " << y << " z : " << z << "\n" ;
+  } // else a3 <= a1*a2
+
+  cout << "x : " << x << " y : " << y << " z : " << z << "\n" ;
+  i = 1 ;
+  while ( i < 4 ) {
+    cout << "a[" << i << "] : " << a[i] << "\n" ;
+    i++ ;
+  } // while
+
+  cout << "------------------------------------------\n" ;
+
+  // + - * / %
+  cout << ( a[1] = a2 = a[2]+a[3]*a[3]-a1-a2-a[4]%50 ) << "\n" ;
+  cout << a[1]-305%a[2]-300/a[3]- ( a[3] = a2-a[4] ) %50 << "\n" ;
+  cout << a[1]-305%a[2]- ( a[3] = a2-a[4] ) %50-300/a[3] << "\n" ;
+  cout << ( a[2] = 300 / ( a[2]+a[1] ) +a1 ) +10+a[2] << "\n" ;  
+  cout << a[1]- - ( a[2]-a3*a[3] ) << "\n" ;
+
+  // << >>
+  cout << a[2] << "\n" ;
+  cout << ( a[2] = ( a[2] << 2 ) -a2-a[1]/2*3%25 ) << "\n" ;
+  cout << ( a[1] = a[2] = ( a[2] >> 2 ) + a[1]%a[2] ) << "\n" ;
+
+  // && || ! < <= > >=  ==   !=
+  cout << ( b1 = f1-a[2]*f1+a2 > f2-a[2]*f1+a2 ) << "\n" ;
+  cout << ( b2 = a[1]+a[2] >= a[3]%35 ) << "\n" ;
+  cout << ( b3 = b1 && ( b2 || a[3] >= a[2]%a[1] ) ) << "\n" ;
+  cout << ( b3 = b3 || ( a[1]*a3 < a[2]*a2 && ! ( b2 || a[3] >= a[2]%a[1] ) ) ) << "\n" ;
+
+  cout << "==============================================\n" ;
+  // simple conditional expression and comma expression
+  cout << "a1 : " << a1 << " a[2] : " << a[2] << " -- " 
+       << ( ( a1 > a[2] ) ? a1 += 50 : a[2] -= 30 ) << " -- "
+       << "a1 : " << a1 << " a[2] : " << a[2] << "\n"   ;
+  cout << ( a1 += a[2] + 10, a[2] += a1 - 20, a1 += a[2] + 30 ) 
+       << " a1 : " << a1 << " a[2] : " << a[2] << "\n"   ;
+  cout << ( a[2] += ( a1 + a[3] > a[2] + a[4] ) ? 70 : -70 ) 
+       << " a1 : " << a1 << " a[2] : " << a[2] << "\n" ;
+  cout << ( a1 += ( a1 + a[3] > a[2] + a[4] ) ? 90 + a[3] : -90 - a[4] ) 
+       << " a1 : " << a1 << " a[2] : " << a[2] << "\n" ;
+  cout << "==============================================\n" ;
+
+  // string
+  cout << ( s[2] = ( s[1] = s[1] + " " + s[2] ) + "!Hello!" + s[1] ) << "\n" ;
+  cout << s[1] << "\n" << s[2] << "\n" ;
+  cout << ( s[3] = s[2] + c1 + ( s[2] = s1 + s3 ) + s3 + s[2] ) << "\n" ;
+  cout << s[1] + "\n" + s[2] + "\n" + s[3] << "\n" ;
+
+Done   (  
+  ) 
+     ;cout << 10 ; // Program execution
+  cout << 3+5 ;     // should not come here.<<
+
+正確的輸出應該是>>Our-C running ...
+> Definition of x entered ...
+Definition of y entered ...
+Definition of z entered ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Definition of a1 entered ...
+Definition of a2 entered ...
+Definition of a3 entered ...
+> Definition of f1 entered ...
+Definition of f2 entered ...
+Definition of f3 entered ...
+> Definition of b1 entered ...
+Definition of b2 entered ...
+Definition of b3 entered ...
+> Definition of s1 entered ...
+Definition of s2 entered ...
+Definition of s3 entered ...
+> Definition of c1 entered ...
+Definition of c2 entered ...
+Definition of c3 entered ...
+> Definition of a entered ...
+Definition of b entered ...
+> Definition of s entered ...
+> Definition of i entered ...
+Definition of j entered ...
+Definition of k entered ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> a3 : 302
+Statement executed ...
+> Statement executed ...
+> a[1] : 26
+a[2] : 44
+a[3] : 30
+Statement executed ...
+> Statement executed ...
+> a1 : 276 a2 : 30 a3 : 302
+Statement executed ...
+> ------------------------------------------
+Statement executed ...
+> x : 11 y : 22 z : 33
+Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> a3 : 22 x : 160 z : 34
+a3 : 724 x : 179 z : 35
+a3 : 1680 x : 166 z : 36
+a3 : 2232 x : 177 z : 37
+a3 : 2739 x : 188 z : 38
+Statement executed ...
+> a1 : 35 a2 : 35 a3 : 2739 x : 11
+Statement executed ...
+> Statement executed ...
+> a[1] : 28
+a[2] : 46
+a[3] : 32
+Statement executed ...
+> a1 : 35 a2 : 35 y : 3050 z : 346
+Statement executed ...
+> x : 11 y : 22 z : 346
+Statement executed ...
+> Statement executed ...
+> a[1] : -318
+a[2] : 3050
+a[3] : 32
+Statement executed ...
+> ------------------------------------------
+Statement executed ...
+> 3962
+Statement executed ...
+> 3628
+Statement executed ...
+> 3637
+Statement executed ...
+> 80
+Statement executed ...
+> -10732883
+Statement executed ...
+> 35
+Statement executed ...
+> -3840
+Statement executed ...
+> -838
+Statement executed ...
+> true
+Statement executed ...
+> false
+Statement executed ...
+> true
+Statement executed ...
+> true
+Statement executed ...
+> ==============================================
+Statement executed ...
+> a1 : 35 a[2] : -838 -- 85 -- a1 : 85 a[2] : -838
+Statement executed ...
+> -2314 a1 : -2314 a[2] : -1601
+Statement executed ...
+> -1531 a1 : -2314 a[2] : -1531
+Statement executed ...
+> 1696 a1 : 1696 a[2] : -1531
+Statement executed ...
+> ==============================================
+Statement executed ...
+> OK OK!Hello!OK OK
+Statement executed ...
+> OK OK
+OK OK!Hello!OK OK
+Statement executed ...
+> OK OK!Hello!OK OKaHiWhatWhatHiWhat
+Statement executed ...
+> OK OK
+HiWhat
+OK OK!Hello!OK OKaHiWhatWhatHiWhat
+Statement executed ...
+> Our-C exited ...<<

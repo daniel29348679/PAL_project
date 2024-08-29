@@ -1,0 +1,609 @@
+當測試「Test case 1 of 3」時，Input為>>1
+// ========== Proj. 4    Prob. 8   Test 1/3 (viewable) ============
+
+  // =========== Proj. 3 tests (from Prob. 3&4) START =========
+
+  // string *cs1 = new string( "Hi" ), *cs2 = new string( "Hello" ) ;
+  // cs1->append( *cs2 ) ;
+  // cout << *cs1 << "\n" ;
+
+  // preparation
+
+  int a1, a2, a3 ;
+  float f1, f2, f3 ;
+  bool b1, b2, b3 ;
+  string s1, s2, s3 ;
+  char c1, c2, c3 ;
+  int a[10], b[10] ;
+  string s[10] ;
+  int i, j, k ;
+  
+  // Problem 3 : test data 1/3 ( viewable )
+
+  a1 = 10 ;
+  a2 = 20 ;
+  a3 = -30 ;
+  f1 = 1.5 ;
+  f2 = 0.25 ;
+  f3 = -0.125 ;
+  s1 = "Hi" ;
+  s2 = "Hello" ;
+  s3 = "What" ;
+  c1 = 'a' ;
+  c2 = 'b' ;
+  c3 = 'c' ;
+  b1 = b2 = b3 = false ;
+  
+  i = j = k = 0 ;
+  
+  while ( i < 10 ) {
+    a[i] = 10 ;
+    b[i] = 20 ;
+    s[i] = "Bravo" ;
+    i++ ;
+  } // while i < 10
+
+  // + - * / %
+  cout << ( a[1] = a2 = a[2]+a[3]*a[3]-a1-a2-a[4]%50 ) << "\n" ;
+  cout << a[1]-305%a[2]-300/a[3]- ( a[3] = a2-a[4] ) %50 << "\n" ;
+  cout << a[1]-305%a[2]- ( a[3] = a2-a[4] ) %50-300/a[3] << "\n" ;
+  cout << ( a[2] = 300 / ( a[2]+a[1] ) +a1 ) +10+a[2] << "\n" ;  
+  cout << a[1]- - ( a[2]-a3*a[3] ) << "\n" ;
+
+  // << >>
+  cout << a[2] << "\n" ;
+  cout << ( a[2] = ( a[2] << 2 ) -a2-a[1]/2*3%25 ) << "\n" ;
+  cout << ( a[1] = a[2] = ( a[2] >> 2 ) + a[1]%a[2] ) << "\n" ;
+
+  // && || ! < <= > >=  ==   !=
+  cout << ( b1 = f1-a[2]*f1+a2 > f2-a[2]*f1+a2 ) << "\n" ;
+  cout << ( b2 = a[1]+a[2] >= a[3]%35 ) << "\n" ;
+  cout << ( b3 = b1 && ( b2 || a[3] >= a[2]%a[1] ) ) << "\n" ;
+  cout << ( b3 = b3 || ( a[1]*a3 < a[2]*a2 && ! ( b2 || a[3] >= a[2]%a[1] ) ) ) << "\n" ;
+
+  cout << ( ! ( a[1] == a[1]*2-a[1] ) && b3 ) << "\n" ;
+  cout << ( b3 || a[1] != a[1]*2-a[1] || ! ( a2 > a[2] ) ) << "\n" ;
+  cout << ( b3 || ( a[1] != a[1]*2-a[1] && true ) || ! ( a2 > a[2] || false ) ) << "\n" ;
+  // cout << ( true && false == false ) << "\n" ; // '==' and '!=' should not be
+  // cout << ( true || true != false ) << "\n" ;  // applied to booleans
+
+  // string
+  cout << ( s[2] = ( s[1] = s[1] + " " + s[2] ) + "!Hello!" + s[1] ) << "\n" ;
+  cout << s[1] << "\n" << s[2] << "\n" ;
+  cout << ( s[3] = s[2] + c1 + ( s[2] = s1 + s3 ) + s3 + s[2] ) << "\n" ;
+  cout << s[1] + "\n" + s[2] + "\n" + s[3] << "\n" ;
+
+  // =========== Proj. 3 tests (from Prob. 3&4) + while END   =========
+  
+  cout << "------------ Proj. 3 test end --------------\n" ;
+
+int gA, gY ; // 'gY', a to be used global, has to be declared in advance
+int gW[ 10 ], gV[ 10 ] ;
+string gS[ 10 ] ;
+  gY = 3 ;
+  gA = 20 ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    gW[i] = a1*i + 10 ;
+    gV[i] = a2*i + 20 ;
+    gS[i] = "Q" ;
+    i++ ;
+  } // while i < 10
+  
+  i = 0 ;
+
+  cout << "------------ global init end --------------\n" ;
+
+int F81( int c, int & d, int w[ 10 ], int p[ 10 ], string t, string & u, string ss[ 10 ] ) {
+
+  int c1, d1 ;
+  c1 = c ;
+  d1 = d ;
+  if ( c1 < 0 )
+    c1 = -c1 ;
+  if ( d1 < 0 )
+    d1 = -d1 ;
+    
+  c = gW[ c1%10 ] + gV[ d1%10 ] ;
+  d = gA + c ;
+  
+  int i ;
+  i = 0 ;
+  while ( i < 10 ) {
+    w[i] = w[i]+1 ;
+    p[i] = 2+p[i] ;
+    ss[i] = ss[i]+"3" ;
+    i++ ;
+  } // while
+  
+  t = t+"4" ;
+  u = "5"+u ;
+  
+  return c+d ;
+
+} // F81()
+
+int F82( int c, int & d, int w[ 10 ], int p[ 10 ], string t, string & u, string ss[ 10 ] ) {
+
+  cout << "F82() starts.\n" ;
+
+  int f81a, f81b, f81c ;
+  int f81d ;
+  
+  f81c = F81( c, c, w, w, t, t, ss ) ;
+  
+  cout << "f81c : " << f81c << " c : " << c
+       << " t : '" << t << "' u : '" << u << "'\n" ; 
+  
+  f81d = F81( d, d, p, p, u, u, ss ) ;
+  
+  cout << "f81d : " << f81d << " d : " << d
+       << " t : '" << t << "' u : '" << u << "'\n" ; 
+  
+  f81a = F81( c, d, w, p, t, u, ss ) ;
+  
+  cout << "f81a : " << f81a << " c : " << c << " d : " << d
+       << " t : '" << t << "' u : '" << u << "'\n" ; 
+  
+  f81b = F81( d, c, p, w, u, t, ss ) ;
+  
+  cout << "f81b : " << f81b << " c : " << c << " d : " << d
+       << " t : '" << t << "' u : '" << u << "'\n" ; 
+  
+  cout << "F82() ends.\n" ;
+  
+  return f81a+f81b-f81c-f81d ;
+
+} // F82()
+
+int F51( int c, int & d, int w[ 10 ], int p[ 10 ], string t, string & u, string ss[ 10 ] ) {
+// be sure to initialize all parameters and all globals before calling this routine
+  
+  cout << "\nF51() - start.\n" ;
+
+  int gA ;
+  
+  gA = gY = c - d + F82( c, d, w, p, t, u, ss ) ;
+  c -= d += gA + gY - F82( c, d, w, p, t, u, ss ) ;
+  
+  int gW[ 10 ] ;
+  
+  int i ;
+  i = 0 ;
+  while ( i < 10 ) {
+    gW[i] = w[i]+p[i] ;
+    gV[i] = 2*p[i]-w[i] ;
+    w[i] = w[i] - i ;
+    p[i] = p[i] + i ;
+    ss[i] = ss[i] + " Wa " ;
+    i++ ;
+  } // while i < 10
+  
+  int gY ;
+  
+  gA += gY = 3 ;  
+  
+  int gV[ 10 ] ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    gW[i] += gY ;
+    gV[i] = gA-gW[i] ;
+    w[i] = w[i] - gY ;
+    p[i] = p[i] + gA ;
+    i++ ;
+  } // while i < 10
+  
+  int a[ 10 ] ; // int b[ 10 ] ;
+  string s[ 10 ] ;
+  int a1 ; // a2, a3 ;
+  string s1 ; // s2, s3 ;
+  
+  s1 = t ;
+  t = u + " Ha " ;
+  u = s1 + " Hi " ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    a[i] = w[i] + 10 ;
+    s[i] = ss[i] + " Hi " ;
+    if ( i%2 == 0 )
+      ss[i] = s[i] ;
+    i++ ;
+  } // while i < 10
+  
+  a1 = gW[ 3 ] ;
+  s1 = s[ 5 ] ;
+  
+  a1 -= gA ;
+  a[3] += a[5] += gW[2] - a1 ;
+  s1 = s1 + " ChungLi " ;
+  
+  if ( gW[7] < 0 )
+    gW[7] = -gW[7] ;
+  
+  if ( gV[8] < 0 )
+    gV[8] = -gV[8] ;
+  
+  if ( a[3] < 0 )
+    a[3] = -a[3] ;
+  
+  cout << "F51() - end.\n" ;
+
+  return gW[ gV[8]%10 ] + gV[ ( 3+gW[7] ) %10 ] + a[ a[3]%10 ] ;
+  
+} // F51()
+
+string F52( int c, int & d, int w[ 10 ], int p[ 10 ], string t, string & u, string ss[ 10 ] ) {
+// be sure to initialize all parameters and all globals before calling this routine
+  
+  cout << "\nF52() - start.\n" ;
+
+  int gA ;
+  
+  gA = gY = c - d ;
+  c -= d += gA + gY ;
+  
+  int gW[ 10 ] ;
+  
+  int i ;
+  i = 0 ;
+  while ( i < 10 ) {
+    gW[i] = w[i]+p[i] ;
+    gV[i] = 2*p[i]-w[i] ;
+    w[i] = w[i] - i ;
+    p[i] = p[i] + i ;
+    ss[i] = ss[i] + " Wa " ;
+    i++ ;
+  } // while i < 10
+  
+  int gY ;
+  
+  gA += gY = 3 ;  
+  
+  int gV[ 10 ] ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    gW[i] += gY ;
+    gV[i] = gA-gW[i] ;
+    w[i] = w[i] - gY ;
+    p[i] = p[i] + gA ;
+    i++ ;
+  } // while i < 10
+  
+  int a[ 10 ] ; // int b[ 10 ] ;
+  string s[ 10 ] ;
+  int a1 ; // a2, a3 ;
+  string s1 ; // s2, s3 ;
+  
+  s1 = t ;
+  t = u + " Ha " ;
+  u = s1 + " Hi " ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    a[i] = w[i] + 10 + i ;
+    s[i] = ss[i] + " Hi " ;
+    if ( i%2 == 1 )
+      ss[i] = s[i] ;
+    i++ ;
+  } // while i < 10
+  
+  a1 = gW[ 3 ] ;
+  s1 = s[ 5 ] ;
+  
+  a1 -= gA ;
+  a[3] += a[5] += gW[2] - a1 ;
+  s1 = s1 + " ChungLi " ;
+  
+  if ( gW[5] < 0 )
+    gW[5] = -gW[5] ;
+  
+  if ( gV[4] < 0 )
+    gV[4] = -gV[4] ;
+  
+  if ( a[9] < 0 )
+    a[9] = -a[9] ;
+  
+  p[5] = w[2] = gW[ gV[4]%10 ] + gV[ ( 3+gW[5] ) %10 ] + a[ a[9]%10 ] ;
+  
+  cout << "F52() - end.\n" ;
+
+  return s1 + ss[ 5 ] + s[ 2 ] ;
+  
+} // F52()
+
+  cout << "F51( a1, gY, a, gV, s1, s2, s ) : " 
+       <<  F51( a1, gY, a, gV, s1, s2, s ) 
+       << "\n" ;
+  
+  cout << "a1 : " << a1 << " gY : " << gY << " s1 : " << s1 << " s2 : " << s2 << "\n" ;
+  
+  cout << "gA+a2+2+F51( gA, a2, gW, b, s2, s1, gS )+3+gA+a2 : " 
+       <<  gA+a2+2+F51( gA, a2, gW, b, s2, s1, gS )+3+gA+a2 
+       << "\n" ;
+       
+  cout << "gA : " << gA << " a2 : " << a2 << " s1 : " << s1 << " s2 : " << s2 << "\n" ;
+  
+  cout << "a1+a2+2+F51( a1, a2, a, b, s2, s1, gS )+3+a1+a2 : " 
+       <<  a1+a2+2+F51( a1, a2, a, b, s2, s1, gS )+3+a1+a2 
+       << "\n" ;
+       
+  cout << "a1 : " << a1 << " a2 : " << a2 << " s1 : " << s1 << " s2 : " << s2 << "\n" ;
+  
+  cout << "F52( gA, gY, gW, gV, s2, s2, s ) + ' OK?' : " 
+       <<  F52( gA, gY, gW, gV, s2, s2, s ) + " OK?" << "\n" ;
+  
+  cout << "-----------Simple Variables-------------\n" ;
+  
+  cout << "gA : " << gA << " gY : " << gY
+       << " a1 : " << a1 << " a2 : " << a2 
+       << " s1 : " << s1 << " s2 : " << s2 << "\n" ;
+  
+  cout << "i : " << i << "\n" ;
+  
+  cout << "-----------gW[]-------------\n" ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    cout << gW[ i ] << " " ;
+    i++ ;
+  } // while
+  
+  cout << "\n-----------gV[]-------------\n" ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    cout << gV[ i ] << " " ;
+    i++ ;
+  } // while
+
+  cout << "\n-----------a[]-------------\n" ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    cout << a[ i ] << " " ;
+    i++ ;
+  } // while
+
+  cout << "\n-----------b[]-------------\n" ;
+  
+  i = 0 ;
+  while ( i < 10 ) {
+    cout << b[ i ] << " " ;
+    i++ ;
+  } // while
+
+  cout << "\n-----------gS[]-------------\n" ;
+  
+  i = 0 ;
+  while ( i < 5 ) {
+    cout << gS[ i ] << "\n" ;
+    i++ ;
+  } // while
+
+  cout << "-----------s[]-------------\n" ;
+  
+  i = 0 ;
+  while ( i < 5 ) {
+    cout << s[ i ] << "\n" ;
+    i++ ;
+  } // while
+
+  // ===========================================================
+  // ============= also copy the following to PAL ==============
+  // ===========================================================
+
+  cout << "---This cout-stmt is not part of the test data.---" ;
+
+Done   (  
+  ) 
+     ;cout << 10 ; // Program execution
+  cout << 3+5 ;     // should not come here.<<
+
+正確的輸出應該是>>Our-C running ...
+> Definition of a1 entered ...
+Definition of a2 entered ...
+Definition of a3 entered ...
+> Definition of f1 entered ...
+Definition of f2 entered ...
+Definition of f3 entered ...
+> Definition of b1 entered ...
+Definition of b2 entered ...
+Definition of b3 entered ...
+> Definition of s1 entered ...
+Definition of s2 entered ...
+Definition of s3 entered ...
+> Definition of c1 entered ...
+Definition of c2 entered ...
+Definition of c3 entered ...
+> Definition of a entered ...
+Definition of b entered ...
+> Definition of s entered ...
+> Definition of i entered ...
+Definition of j entered ...
+Definition of k entered ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> 70
+Statement executed ...
+> 25
+Statement executed ...
+> 50
+Statement executed ...
+> 36
+Statement executed ...
+> 1883
+Statement executed ...
+> 13
+Statement executed ...
+> -23
+Statement executed ...
+> -5
+Statement executed ...
+> true
+Statement executed ...
+> false
+Statement executed ...
+> true
+Statement executed ...
+> true
+Statement executed ...
+> false
+Statement executed ...
+> true
+Statement executed ...
+> true
+Statement executed ...
+> Bravo Bravo!Hello!Bravo Bravo
+Statement executed ...
+> Bravo Bravo
+Bravo Bravo!Hello!Bravo Bravo
+Statement executed ...
+> Bravo Bravo!Hello!Bravo BravoaHiWhatWhatHiWhat
+Statement executed ...
+> Bravo Bravo
+HiWhat
+Bravo Bravo!Hello!Bravo BravoaHiWhatWhatHiWhat
+Statement executed ...
+> ------------ Proj. 3 test end --------------
+Statement executed ...
+> Definition of gA entered ...
+Definition of gY entered ...
+> Definition of gW entered ...
+Definition of gV entered ...
+> Definition of gS entered ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> Statement executed ...
+> ------------ global init end --------------
+Statement executed ...
+> Definition of F81() entered ...
+> Definition of F82() entered ...
+> Definition of F51() entered ...
+> Definition of F52() entered ...
+> F51( a1, gY, a, gV, s1, s2, s ) : 
+F51() - start.
+F82() starts.
+f81c : 80 c : 50 t : '5Hi' u : 'Hello'
+f81d : 560 d : 290 t : '5Hi' u : '5Hello'
+f81a : 86 c : 50 d : 53 t : '5Hi' u : '55Hello'
+f81b : 150 c : 85 d : 53 t : '55Hi' u : '55Hello'
+F82() ends.
+F82() starts.
+f81c : 92 c : 56 t : '5Hi' u : '55Hello'
+f81d : 1212 d : 616 t : '5Hi' u : '555Hello'
+f81a : 1058 c : 56 d : 539 t : '5Hi' u : '5555Hello'
+f81b : 1122 c : 571 d : 539 t : '55Hi' u : '5555Hello'
+F82() ends.
+F51() - end.
+-319
+Statement executed ...
+> a1 : 10 gY : -1131 s1 : Hi s2 : Hi Hi 
+Statement executed ...
+> gA+a2+2+F51( gA, a2, gW, b, s2, s1, gS )+3+gA+a2 : 
+F51() - start.
+F82() starts.
+f81c : -664 c : -322 t : '5Hi Hi ' u : 'Hi'
+f81d : -658 d : -319 t : '5Hi Hi ' u : '5Hi'
+f81a : 1920 c : -322 d : 970 t : '5Hi Hi ' u : '55Hi'
+f81b : -62 c : -21 d : 970 t : '55Hi Hi ' u : '55Hi'
+F82() ends.
+F82() starts.
+f81c : -652 c : -316 t : '5Hi Hi ' u : '55Hi'
+f81d : -646 d : -313 t : '5Hi Hi ' u : '555Hi'
+f81a : 220 c : -316 d : 120 t : '5Hi Hi ' u : '5555Hi'
+f81b : 1048 c : 534 d : 120 t : '55Hi Hi ' u : '5555Hi'
+F82() ends.
+F51() - end.
+10375
+Statement executed ...
+> gA : 20 a2 : 3814 s1 : Hi Hi  Hi  s2 : Hi Hi 
+Statement executed ...
+> a1+a2+2+F51( a1, a2, a, b, s2, s1, gS )+3+a1+a2 : 
+F51() - start.
+F82() starts.
+f81c : 142 c : 81 t : '5Hi Hi ' u : 'Hi Hi  Hi '
+f81d : 134 d : 77 t : '5Hi Hi ' u : '5Hi Hi  Hi '
+f81a : 20 c : 81 d : 20 t : '5Hi Hi ' u : '55Hi Hi  Hi '
+f81b : 122 c : 71 d : 20 t : '55Hi Hi ' u : '55Hi Hi  Hi '
+F82() ends.
+F82() starts.
+f81c : 142 c : 81 t : '5Hi Hi ' u : '55Hi Hi  Hi '
+f81d : 142 d : 81 t : '5Hi Hi ' u : '555Hi Hi  Hi '
+f81a : 140 c : 81 d : 80 t : '5Hi Hi ' u : '5555Hi Hi  Hi '
+f81b : 122 c : 71 d : 80 t : '55Hi Hi ' u : '5555Hi Hi  Hi '
+F82() ends.
+F51() - end.
+-7832
+Statement executed ...
+> a1 : 10 a2 : -7774 s1 : Hi Hi  Hi  s2 : Hi Hi 
+Statement executed ...
+> F52( gA, gY, gW, gV, s2, s2, s ) + ' OK?' : 
+F52() - start.
+F52() - end.
+Bravo33333333 Wa  Wa  Hi  ChungLi Bravo33333333 Wa  Wa  Hi HiWhat33333333 Wa  Hi  Wa  Hi  OK?
+Statement executed ...
+> -----------Simple Variables-------------
+Statement executed ...
+> gA : 20 gY : 11874 a1 : 10 a2 : -7774 s1 : Hi Hi  Hi  s2 : Hi Hi  Hi 
+Statement executed ...
+> i : 0
+Statement executed ...
+> -----------gW[]-------------
+Statement executed ...
+> Statement executed ...
+> 16 24 3993 40 48 56 64 72 80 88 Statement executed ...
+> 
+-----------gV[]-------------
+Statement executed ...
+> Statement executed ...
+> 16588 16616 16614 16482 16580 3993 16576 16574 16572 16570 Statement executed ...
+> 
+-----------a[]-------------
+Statement executed ...
+> Statement executed ...
+> 28 11 9 72 20 18 16 14 12 10 Statement executed ...
+> 
+-----------b[]-------------
+Statement executed ...
+> Statement executed ...
+> -758 -756 -754 -752 -750 -748 -746 -744 -742 -740 Statement executed ...
+> 
+-----------gS[]-------------
+Statement executed ...
+> Statement executed ...
+> Q33333333 Wa  Hi 33333333 Wa  Hi 
+Q33333333 Wa 33333333 Wa 
+Q33333333 Wa  Hi 33333333 Wa  Hi 
+Q33333333 Wa 33333333 Wa 
+Q33333333 Wa  Hi 33333333 Wa  Hi 
+Statement executed ...
+> -----------s[]-------------
+Statement executed ...
+> Statement executed ...
+> Bravo33333333 Wa  Hi  Wa 
+Bravo Bravo33333333 Wa  Wa  Hi 
+HiWhat33333333 Wa  Hi  Wa 
+Bravo Bravo!Hello!Bravo BravoaHiWhatWhatHiWhat33333333 Wa  Wa  Hi 
+Bravo33333333 Wa  Hi  Wa 
+Statement executed ...
+> ---This cout-stmt is not part of the test data.---Statement executed ...
+> Our-C exited ...<<
