@@ -59,6 +59,8 @@ function的處理:
 
 5.呼叫無用function，若怕老師使用組合語言來比對，可以替這些function加上inline修飾詞
 
+
+有問題可以傳訊息到daniel29348679@gmail.com，IG:danieltseng1219
 6.換一些等價的語法，i++ -> i +=1 ,i-=-1
 
 
