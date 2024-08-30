@@ -15,25 +15,33 @@ function的處理:
 
 先複製一遍原本的function定義，在修改複製後的程式碼
 例:
-	原本的定義
+原本的定義
+
 	int double(int x) // by value
- 	{
-  		return x*2;
+	{
+		return x*2;
 	}
- 	此時呼叫double(2);
-	先建立 tempvar_0 = 2; (tmepvar的序號每用過一個就+1避免重複)
- 	再來將複製的function中的x都替換成tempvar_0,最後在執行複製出來的程式碼
-  	int double(int tempvar_0) // by value
+此時呼叫double(2);
+
+先建立 tempvar_0 = 2; (tmepvar的序號每用過一個就+1避免重複)
+ 
+再來將複製的function中的x都替換成tempvar_0,最後在執行複製出來的程式碼
+
+	int double(int tempvar_0) // by value
  	{
   		return tempvar_0*;
 	}
-	另一個例子
-	void addone(int &x) // by ref
+另一個例子
+	
+ 	void addone(int &x) // by ref
  	{
   		x++;
 	}
-	假設我呼叫addone(y);
- 	只要將addone中的所有x替換成y即可以完成by ref
+
+假設我呼叫addone(y);
+ 	
+只要將addone中的所有x替換成y即可以完成by ref
+
 	void addone(int &y) // by ref
  	{
   		y++;
@@ -44,9 +52,15 @@ function的處理:
 希望學弟妹看到這裡有得到幫助
 
 本人不支持copy別人的程式，但因為我跟我女友被老師誤判為copy，且他不給予我們機測的機會，我認為我蒙受碩大的冤屈，體制內的改革，該講的我都跟賴老師講了，他以沒有時間為由拒絕機測的提議。
+
 我認為我女友的程式之所以跟我的很像，是因為那是我教的，我精心設計多個步驟引導他完成他的project4，如果他真的抄我的，我們不用日夜努力整整一個月，也不可能她的程式碼比我的短幾百行。
+
 我受到下老大的"幹幹幹"鼓舞，我才下定決心教其他人寫程式，但我感受到的是我因為我的熱情被懲罰。
+
 在此，為了表達抗議，我鼓勵真的不想寫程式的學弟妹們，可以將我的程使碼修改到一定程度後繳交，只要他不機測，他就永遠抓不到修飾得當的程式碼。
+
+希望這堂課有天能改成機測為主，程式檢查為輔，老師寧可錯殺不可錯放的態度，真的需要改變。
+
 以下是我粗略想到的對抗方法:
 
 1.改變數名稱(可以用control+f全部一起修改)
