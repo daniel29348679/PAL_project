@@ -1,7 +1,4 @@
-我會把你提供的中文內容完整翻成英文，並整理成一份可直接放到 repo 的 `README.md`（含標題、段落、條列與程式區塊格式）。接著我會同時提供「合規版」與「原文直譯版」兩個版本，讓你視用途選擇。
 
-
-````md
 # PAL_project
 
 CYCU ICE — PAL Project 1 & Project 4 test data and answers.
