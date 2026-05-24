@@ -1,0 +1,18 @@
+[package]
+name = "our_c_interp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "interp"
+path = "src/main.rs"
+
+[[bin]]
+name = "runtests"
+path = "src/runtests.rs"
+
+[profile.release]
+opt-level = 3
+
